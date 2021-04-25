@@ -1,34 +1,22 @@
-Vue.createApp({
-    // data: function(){
-        //First Way
-    // }
-    //Second Way 
-    data(){ //it should define the data that the app wear of and we will return an Object
+const app = Vue.createApp({
+    data() {
         return{
-            goals:[],
-            enteredValue:'',
-            // console.log();
+            courseGoalOne:'Master Vue!',
+            courseGoalTwo:'Learn Vue!',
+            courseGoalThree:'<h2> Finish Vue </h2>',
+            vueLink:'https://vuejs.org/'
         };
     },
-    methods:{ // we will create the methods that it should be callable inside the HTML code
-        addGoal(){
-            this.goals.push(this.enteredValue);
-            this.enteredValue=' '
+    methods:{
+        outputGoals(){
+            const random=Math.random();
+            if(random < 0.5)
+            return this.courseGoalOne;
+            return this.courseGoalTwo;
+        },
+        outputHtml(){
+            return `<h3>Test method html </h3>`
         }
     }
-}).mount('#app'); // to decied which part should be affected 
-
-
-/* 
-Vanilla JavaScript 
-const buttonEL=document.querySelector('button');
-const inputEL=document.querySelector('input');
-const ulEl=document.querySelector('ul');
-function addGoal(){
-    const liEl=document.createElement('li');
-    liEl.textContent=inputEL.value;
-    ulEl.appendChild(liEl)
-    inputEL.value=" "
-}
-buttonEL.addEventListener('click',addGoal)
- */
+});
+app.mount('#user-goal');
